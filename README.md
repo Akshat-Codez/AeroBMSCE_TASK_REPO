@@ -3,7 +3,7 @@
 A static website for the AeroBMSCE student aerospace and aeromodelling club at BMS College of Engineering.
 It introduces the club, its aircraft, milestones, partners and contact details using plain HTML, CSS and JavaScript.
 
-**Live site:** [akshat-codez.github.io/AeroBMSCE_TASK_REPO](https://akshat-codez.github.io/AeroBMSCE_TASK_REPO/)
+**Live site:** https://aerobmsce-qb4mh8jv6-akshat-codezs-projects.vercel.app/
 
 ## Pages and sections
 
@@ -34,32 +34,26 @@ The first four items are sections within `index.html`; the partner page is a sep
 └── docs/              Project structure and implementation notes
 ```
 
-## Run locally
-
-From the project root, start Python's static file server:
-
-```bash
-python -m http.server 8080
-```
-
-Then open [http://localhost:8080](http://localhost:8080). Keep the server running while reviewing the site. The site uses JavaScript modules, so serving the files locally is more reliable than opening `index.html` directly from disk.
-
 ## Deployment
 
-GitHub Pages serves the repository's root folder from the `main` branch. The site uses relative links and asset paths so the pages work from the repository's GitHub Pages URL.
+The website is deployed on Vercel and connected to my GitHub repository. Vercel serves the static site from the repository root.
 
 ## Flaws of the original website
 
-The earlier site history includes navigation links to `journey.html` and `partners.html` even though those pages were removed. The prompt 5A changes removed those stale pages and links while consolidating the remaining content. The project also moved from large, monolithic CSS and JavaScript files to section-based styles and modules, making the page easier to maintain.
+While going through the original site, I noticed that some navigation links pointed to pages that were no longer part of the site. The history pages also felt separate from the rest of the navigation. I removed those stale links as the content was brought together, and organized the styles and scripts into smaller files so the site is easier to follow and update.
 
 ## Design route and UI/UX decisions
 
-The site keeps its dark navy and steel-blue palette, with Barlow Condensed for headings and IBM Plex Sans and IBM Plex Mono for body and technical text. The shared navigation links to the main sections and the Partner page. The Take Off and Partner calls to action use a contained plane animation, and the partner area presents a logo strip. The Partner page uses a direct email contact card instead of a form because this static site has no backend to receive enquiries.
+I kept the site's navy and steel-blue colors and its existing fonts, then aimed to make the pages feel like parts of the same club website. I looked at a range of AI design references, including Lovable, and motion ideas from motionsites.ai while working out the layout and interactions. The Take Off and Partner buttons use a small plane animation, and the partner logos sit together in a strip. The Partner page gives visitors a direct email contact instead of a form, since the site has no backend to receive enquiries.
 
 ## A problem or edge case faced
 
-During local review, `localhost:8080` returned an empty response when no server was listening on that port. Running `python -m http.server 8080` from the repository root and opening the exact local address resolved it. A local server also allows the browser to load the site's relative assets and JavaScript modules in the same way the deployed site does.
+One detail I had to get right was the Partner button animation. I wanted the plane to stay clipped inside the button, travel from left to right while climbing, and give the visitor a moment to see the animation before the page changed. I used CSS keyframes for the flight and a short JavaScript delay to open `partner.html` after about one second. The button is disabled during that time to prevent a second click from interrupting the transition.
 
 ## Credits
 
-Logos and images were provided by the AeroBMSCE committee. AI tools were used during development.
+Logos and images were provided in the orignal repository . I used AI tools for ideas and design references during development, then adapted those ideas to this website.
+
+## Future improvements
+
+I’d like to add a partnership enquiry form to `partner.html` so visitors can enter their details and send an enquiry directly to the club’s email.
