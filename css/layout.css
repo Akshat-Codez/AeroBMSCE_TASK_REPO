@@ -1,0 +1,95 @@
+/**
+ * css/layout.css — Layout containers, grid helpers, section structure, and breakpoints
+ * Depends on: css/base.css
+ * Touches: .wrap, .content-section, .section-header, .sec-number, .sec-title, .two-col
+ * Palette: sec-number uses --color-text at very low opacity as ghost; sec-title uses --color-text
+ */
+
+.wrap {
+  width: 90%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content-section {
+  padding: 80px 0;
+  position: relative;
+}
+
+/* ── Section Header (Engineering Telemetry Style) ── */
+.section-header {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 32px;
+  overflow: hidden;
+}
+
+.sec-number {
+  font-family: var(--font-mono);
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 700;
+  color: rgba(148, 163, 184, 0.08); /* ghost slate, not amber */
+  line-height: 1;
+  user-select: none;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.sec-title {
+  font-family: var(--font-heading);
+  font-size: clamp(20px, 3.5vw, 32px);
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+/* ── Body Blocks (Scroll-revealed) ── */
+.body-block:not(.fleet-card) {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.sub-heading {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 32px;
+}
+
+/* ── Responsive Breakpoints ── */
+@media (max-width: 1024px) {
+  .wrap {
+    width: 92%;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-section {
+    padding: 60px 0;
+  }
+  .two-col {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .section-header {
+    gap: 12px;
+  }
+}
+

@@ -1,0 +1,156 @@
+/**
+ * css/base.css — Base tokens, typography, CSS reset, and accessibility fallbacks
+ * Depends on: None
+ * Touches: :root, html, body, a, focus states, .no-js
+ *
+ * PALETTE (Prompt 3 — all warm amber replaced with steel-blue):
+ *   --color-bg        #0B0F19   page background
+ *   --color-surface   #131D31   cards, panels
+ *   --color-accent    #5FA8D3   ONLY accent — nav underlines, labels, links, specs
+ *   --color-accent-h  #8CC4E8   hover/active state of accent
+ *   --color-text      #E5E9F0   headings and large numbers (off-white, NOT accent)
+ *   --color-muted     #94A3B8   body copy, secondary labels
+ *   --color-border    rgba(148,163,184,0.15)  subtle dividers
+ */
+
+:root {
+  /* ── Primary Palette (all pages must use only these) ─────── */
+  --color-bg:           #0B0F19;
+  --color-surface:      #131D31;
+  --color-surface-hover:#1A2640;
+  --color-accent:       #5FA8D3;
+  --color-accent-hover: #8CC4E8;
+  --color-text:         #E5E9F0;
+  --color-muted:        #94A3B8;
+  --color-border:       rgba(148, 163, 184, 0.15);
+
+  /* Aliases kept for backward compat with existing CSS that uses --color-base / --color-text-main */
+  --color-base:         var(--color-bg);
+  --color-text-main:    var(--color-text);
+  --color-text-muted:   var(--color-muted);
+  --color-border-slate: var(--color-border);
+  --color-border-accent:rgba(95, 168, 211, 0.25);
+
+  /* Deprecated — DO NOT use in new code; kept so old CSS vars resolve */
+  --color-primary:      var(--color-accent);
+
+  /* Typography */
+  --font-heading: 'Barlow Condensed', 'Rajdhani', 'Inter', sans-serif;
+  --font-body:    'IBM Plex Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:    'IBM Plex Mono', 'Space Mono', monospace;
+
+  /* Dimensions */
+  --header-height:   80px;
+  --container-max:   1200px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: auto; /* Managed by Lenis on desktop / native smooth on touch */
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: clip;
+  overscroll-behavior-y: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.85;
+  color: var(--color-accent-hover);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+img, picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* ── NO-JS FALLBACK (Instant visibility if JS fails or disabled) ── */
+.no-js .hero-headline,
+.no-js .hero-tag,
+.no-js .hero-sub,
+.no-js .hero-cta,
+.no-js .systems-check,
+.no-js .body-block,
+.no-js .section-header,
+.no-js .sec-number,
+.no-js .sec-title,
+.no-js .stat-item,
+.no-js .ms,
+.no-js .gallery-item,
+.no-js .tier-card,
+.no-js .event-card {
+  opacity: 1 !important;
+  transform: none !important;
+  clip-path: none !important;
+  -webkit-clip-path: none !important;
+}
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── ACCESSIBILITY & UTILITIES ── */
+.skip-link {
+  position: absolute;
+  top: -120px;
+  left: 16px;
+  background: var(--color-surface);
+  color: var(--color-accent);
+  padding: 10px 18px;
+  border: 1px solid var(--color-accent);
+  z-index: 10000;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 16px;
+  outline: 2px solid var(--color-accent);
+}
+
+.caption-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-muted);
+  letter-spacing: 0.08em;
+  margin-top: 8px;
+}
+

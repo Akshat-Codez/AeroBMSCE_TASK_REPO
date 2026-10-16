@@ -1,0 +1,80 @@
+/**
+ * css/backgrounds.css — Background textures, blueprint grids, contours, and radar sweep
+ * Depends on: css/base.css
+ * Touches: .grain-overlay, .hero-blueprint, .hero-topo, .stats-radar, .radar-sweep, .footer-horizon
+ */
+
+/* ── PRE-RENDERED TILED GRAIN (Zero CPU overhead, no live SVG filter) ── */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url('../images/noise.webp');
+  background-repeat: repeat;
+  opacity: 0.05;
+}
+
+/* ── BLUEPRINT GRID ── */
+.hero-blueprint {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.08;
+}
+
+/* ── TOPOGRAPHIC CONTOUR LINES ── */
+.hero-topo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  animation: topoFloat 18s ease-in-out infinite alternate;
+}
+
+@keyframes topoFloat {
+  from { transform: scale(1) translateY(0); }
+  to   { transform: scale(1.04) translateY(-12px); }
+}
+
+/* ── RADAR SWEEP BACKGROUND ── */
+.stats-radar {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.radar-sweep {
+  transform-origin: 400px 200px;
+  animation: radarSpin 4s linear infinite;
+}
+
+@keyframes radarSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── FOOTER HORIZON SVG ── */
+.footer-horizon {
+  display: block;
+  width: 100%;
+  pointer-events: none;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-topo,
+  .radar-sweep {
+    animation: none !important;
+  }
+}

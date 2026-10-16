@@ -1,0 +1,61 @@
+/* Shared sponsor logo band used by the home and partnership pages. */
+:root {
+  --partners-band-bg: #0B0F19;
+  --partners-band-text: #E5E9F0;
+  --partners-logo-height: 44px;
+  --partners-logo-gap: clamp(22px, 3.5vw, 48px);
+  --partners-band-padding: clamp(28px, 4vw, 44px);
+}
+
+.partners-band {
+  padding: var(--partners-band-padding) 0;
+  background: var(--partners-band-bg);
+  color: var(--partners-band-text);
+}
+
+.partners-band-inner { display: grid; gap: 22px; }
+.partners-band h2 {
+  margin: 0;
+  color: var(--partners-band-text);
+  font: 700 18px/1.2 var(--font-heading);
+  letter-spacing: .04em;
+}
+
+.partner-logo-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px var(--partners-logo-gap);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.partner-logo-list li { display: flex; align-items: center; justify-content: center; margin: 0; }
+.partner-logo-list img {
+  display: block;
+  width: auto;
+  height: var(--partners-logo-height);
+  max-width: min(160px, 28vw);
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: .76;
+  transition: filter .22s ease, opacity .22s ease;
+}
+.partner-logo-list img:hover { filter: grayscale(0); opacity: 1; }
+
+.partners-band--compact { --partners-logo-height: 32px; --partners-band-padding: 24px; }
+.partners-band--compact .partners-band-inner { gap: 16px; }
+.partners-band--compact h2 { font-size: 15px; }
+.partners-band--compact .partner-logo-list { justify-content: flex-start; gap: 16px clamp(18px, 2.5vw, 34px); }
+.partners-band--compact .partner-logo-list img { max-width: min(135px, 25vw); }
+
+@media (max-width: 768px) {
+  .partner-logo-list { justify-content: center; }
+  .partners-band--compact .partner-logo-list { justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .partner-logo-list img { transition: none; }
+}

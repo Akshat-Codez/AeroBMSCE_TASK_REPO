@@ -1,66 +1,580 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="no-js">
 <head>
-<meta charset="utf-8">
-<meta name="robots" content="noindex">
-<title>AeroBMSCE</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AeroBMSCE — one of India's longest-running competitive aerospace &amp; UAV teams, operating from Propel Lab-3, BMS College of Engineering, Bangalore.">
+  <meta name="theme-color" content="#0B0F19">
+  <link rel="canonical" href="https://aerobmsce.github.io/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AeroBMSCE — Above Gravity. Beyond Limits.">
+  <meta property="og:description" content="One of India's longest-running competitive aerospace &amp; UAV teams with international flight history — Fort Worth, IIT Bombay, NITK and beyond.">
+  <meta property="og:image" content="images/photo2.webp">
+  <meta property="og:url" content="https://aerobmsce.github.io/">
+  <meta property="og:site_name" content="AeroBMSCE">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AeroBMSCE — Above Gravity. Beyond Limits.">
+  <meta name="twitter:description" content="Competitive aerospace &amp; UAV team, BMSCE Bangalore. 16+ years, 20+ podium finishes.">
+  <meta name="twitter:image" content="images/photo2.webp">
+
+  <!-- Preconnect & Preload -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="icon" type="image/png" href="images/header-logo.png">
+  <link rel="preload" as="image" href="images/photo2-800w.webp" type="image/webp" fetchpriority="high"
+        imagesrcset="images/photo2-480w.webp 480w, images/photo2-800w.webp 800w, images/photo2.webp 1248w"
+        imagesizes="(max-width: 600px) 480px, (max-width: 1024px) 800px, 1200px">
+
+  <!-- Fonts (Reliable load across all browsers) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;600&display=swap">
+
+  <title>AeroBMSCE — Above Gravity. Beyond Limits.</title>
+
+  <!-- Modular CSS (design system: base → layout → components → backgrounds → sections) -->
+  <link rel="stylesheet" href="css/base.css?v=2">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css?v=2">
+  <link rel="stylesheet" href="css/backgrounds.css">
+  <link rel="stylesheet" href="css/sections/navbar.css?v=2">
+  <link rel="stylesheet" href="css/sections/hero.css">
+  <link rel="stylesheet" href="css/sections/stats.css">
+  <link rel="stylesheet" href="css/sections/about.css">
+  <link rel="stylesheet" href="css/sections/what-we-do.css">
+  <link rel="stylesheet" href="css/sections/fleet.css">
+  <link rel="stylesheet" href="css/sections/achievements.css">
+  <link rel="stylesheet" href="css/sections/previous-events.css">
+  <link rel="stylesheet" href="css/sections/contact.css">
+  <link rel="stylesheet" href="css/sections/join.css">
+  <link rel="stylesheet" href="css/sections/partner-logos.css">
+  <link rel="stylesheet" href="css/sections/footer.css">
+
+  <!-- Module Preloads for Critical Entry Engine -->
+  <link rel="modulepreload" href="js/main.js">
+  <link rel="modulepreload" href="js/config.js">
+  <link rel="modulepreload" href="js/core/logger.js">
+  <link rel="modulepreload" href="js/core/scroll.js">
+
+  <!-- Critical Render Styles (Zero CLS, Immediate FCP) -->
+  <style>
+    :root {
+      --color-bg:           #0B0F19;
+      --color-surface:      #131D31;
+      --color-accent:       #5FA8D3;
+      --color-accent-hover: #8CC4E8;
+      --color-text:         #E5E9F0;
+      --color-muted:        #94A3B8;
+      --color-border:       rgba(148,163,184,0.15);
+      /* Alias kept for any surviving old references */
+      --color-primary:      var(--color-accent);
+      --color-base:         var(--color-bg);
+    }
+    html {
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+      font-size: 16px;
+      overflow-x: clip;
+      overscroll-behavior-y: none;
+    }
+    .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: 80px; }
+    .hero-section { min-height: 100vh; min-height: 100svh; background: var(--color-bg); }
+    .hero-headline { font-size: clamp(42px, 7vw, 90px); font-weight: 700; color: var(--color-text); line-height: 1.05; }
+    .team-photo-frame { border: 1px solid var(--color-border); background: var(--color-surface); }
+    .team-photo-img { width: 100%; height: clamp(300px, 52vh, 600px); object-fit: cover; object-position: center 25%; display: block; }
+  </style>
+
+  <script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body>
 
-<div class="notice">Practice website for the AeroBMSCE web development recruitment task. This is not the official AeroBMSCE website.</div>
+  <!-- FILM GRAIN (Pre-rendered tiled WebP, 0 CPU overhead) -->
+  <div class="grain-overlay" aria-hidden="true"></div>
 
-<div class="top">
-  <div class="wrap">
-    <img src="images/header-logo.png">
-    <div class="nav">
-      <a href="#">Home</a>
-      <a href="#who">Who We Are</a>
-      <a href="journey.html">Journey</a>
-      <a href="partners.html">Partners</a>
-      <a href="contact.html">Contact</a>
+  <!-- ALTIMETER GAUGE (Flight telemetry) -->
+  <div class="altimeter" aria-hidden="true" id="altimeter">
+    <div class="alt-label">ALT</div>
+    <div class="alt-reading" id="altReading">00000</div>
+    <div class="alt-unit">ft</div>
+    <div class="alt-phase" id="altPhase">PRE-FLIGHT</div>
+    <div class="alt-track"><div class="alt-fill" id="altFill"></div></div>
+  </div>
+
+
+  <!-- NOTICE BANNER -->
+  <div class="notice">Practice website for the AeroBMSCE web development recruitment task. This is not the official AeroBMSCE website.</div>
+
+  <!-- Skip-to-content (a11y keyboard) -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- NAVBAR -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a href="#home" class="logo-link" aria-label="AeroBMSCE home">
+        <picture>
+          <source type="image/webp" srcset="images/logo.webp">
+          <img src="images/logo.png" alt="AeroBMSCE Logo" class="header-logo" width="105" height="48" decoding="async">
+        </picture>
+        <span class="logo-text">AEROBMSCE</span>
+      </a>
+      <nav class="nav" id="mainNav" aria-label="Main navigation">
+        <a href="#home"          class="nav-link" data-nav="home">Home</a>
+        <a href="#fleet"         class="nav-link" data-nav="fleet">Fleet</a>
+        <a href="#achievements"  class="nav-link" data-nav="achievements">Milestones</a>
+        <a href="#previous-events"  class="nav-link" data-nav="previous-events">Past Events</a>
+        <a href="#contact"          class="nav-link" data-nav="contact">Contact</a>
+        <a href="partner.html" class="nav-link">Partner</a>
+      </nav>
+      <!-- Mobile Navigation Hamburger Toggle (44px touch target) -->
+      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+      <!-- Quick Jump Trigger (touch devices show this button; desktop uses CMD+K) -->
+      <button class="btn-outline jump-btn" id="jump-btn" type="button" aria-label="Quick jump command palette" style="display:none;">CMD+K</button>
     </div>
-    <div class="clear"></div>
-  </div>
-</div>
+  </header>
 
-<div class="hero">
-  <div class="box">
-    <h1>AeroBMSCE</h1>
-    <p class="tag">&bull; Above Gravity &bull; &nbsp;&nbsp;&nbsp; &bull; Beyond Limits &bull;</p>
-    <p>ONE OF INDIA’S LONGEST-RUNNING COMPETITIVE AEROSPACE &amp; UAV TEAM WITH INTERNATIONAL FLIGHT HISTORY</p>
-  </div>
-</div>
+  <!-- MAIN CONTENT LANDMARK -->
+  <main id="main">
 
-<img class="banner" src="images/photo8.jpg">
+  <!-- 01. HOME / HERO SECTION -->
+  <section class="hero-section" id="home" data-phase="Pre-flight">
+    <a id="hero" aria-hidden="true"></a>
+    <!-- Blueprint Grid Background -->
+    <svg class="hero-blueprint" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="bpGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M40 0 L0 0 0 40" fill="none" stroke="rgba(95,168,211,0.06)" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#bpGrid)"/>
+    </svg>
+    
+    <!-- Topographic Contour Lines -->
+    <svg class="hero-topo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMid slice">
+      <g stroke="rgba(95,168,211,0.07)" stroke-width="1" fill="none" class="topo-lines">
+        <ellipse cx="720" cy="300" rx="680" ry="220"/>
+        <ellipse cx="720" cy="300" rx="560" ry="175"/>
+        <ellipse cx="720" cy="300" rx="440" ry="130"/>
+        <ellipse cx="720" cy="300" rx="320" ry="90"/>
+        <ellipse cx="720" cy="300" rx="200" ry="55"/>
+      </g>
+    </svg>
 
-<div class="wrap">
+    <!-- Hero Headline & Telemetry Content -->
+    <div class="hero-content wrap">
+      <!-- Pre-flight Systems Check Readout -->
+      <div class="systems-check" id="systemsCheck" aria-live="polite">
+        <div class="sc-line" id="sc1">SYSTEMS CHECK...</div>
+        <div class="sc-line" id="sc2">PROPULSION: NOMINAL</div>
+        <div class="sc-line" id="sc3">AVIONICS: ONLINE</div>
+        <div class="sc-line" id="sc4">AeroBMSCE: READY</div>
+      </div>
+      <div class="hero-text">
+        <div class="hero-line-mask"><h1 class="hero-headline" id="heroHeadline">AeroBMSCE</h1></div>
+        <div class="hero-line-mask"><p class="hero-tag" id="heroTag">&bull; Above Gravity &bull;&nbsp;&nbsp;&bull; Beyond Limits &bull;</p></div>
+        <div class="hero-line-mask"><p class="hero-sub" id="heroSub">ONE OF INDIA'S LONGEST-RUNNING COMPETITIVE AEROSPACE &amp; UAV TEAM WITH INTERNATIONAL FLIGHT HISTORY</p></div>
+        <div class="hero-line-mask">
+          <a href="#about" class="fly-btn hero-cta" id="heroCta" aria-label="Take Off to discover AeroBMSCE">
+            <span class="label">Take Off ✈</span>
+            <span class="plane" aria-hidden="true">
+              <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 40 Q10 30 30 30 L160 30 Q195 34 195 40 Q195 46 160 50 L30 50 Q10 50 10 40Z" fill="#0b3d91"/>
+                <path d="M10 40 L5 12 L28 12 L45 32 Z" fill="#d93025"/>
+                <path d="M70 48 L105 78 L128 78 L110 48 Z" fill="#4a6fb5"/>
+                <path d="M70 32 L100 6 L122 6 L108 32 Z" fill="#4a6fb5"/>
+                <path d="M165 33 Q185 34 192 39 L165 39Z" fill="#4aa3ff"/>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
 
-  <a name="who"></a>
-  <h4 class="sec">WHO WE ARE</h4>
-  <p>AeroBMSCE is the official aerospace, aeromodelling, and unmanned systems innovation club of BMS College of Engineering, operating from Propel Lab–3. Established in 2012, the club brings together engineers from 10+ departments to design, build, and test advanced aircraft, drones, and autonomous systems.</p>
+    <!-- Unobstructed Team Photo Showcase -->
+    <div class="hero-team-banner wrap" id="heroTeamBanner">
+      <div class="team-photo-frame">
+        <picture>
+          <source type="image/webp"
+                  srcset="images/photo2-480w.webp 480w, images/photo2-800w.webp 800w, images/photo2.webp 1248w"
+                  sizes="(max-width: 600px) 480px, (max-width: 1024px) 800px, 1200px">
+          <img src="images/photo2.webp"
+               alt="AeroBMSCE participants at SAEINDIA competition"
+               class="team-photo-img"
+               id="heroPhoto"
+               width="1248"
+               height="936"
+               fetchpriority="high"
+               decoding="async">
+        </picture>
+        <div class="photo-caption-bar">
+          <span class="caption-tag">FLIGHT TEAM &bull; SAEINDIA DDC 2024</span>
+          <span class="caption-loc">PRATHYUSHA FLYING GROUNDS</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <h4 class="sec">WHAT WE DO</h4>
-  <ul>
-    <li>Competitive aircraft &amp; UAV design</li>
-    <li>Drone racing &amp; autonomy</li>
-    <li>Industry-grade fabrication &amp; testing</li>
-    <li>Talent development through real-world engineering</li>
-  </ul>
+  <!-- 01. WHO WE ARE / ABOUT SECTION -->
+  <section class="content-section about-section" id="about" data-phase="Takeoff">
+    <div class="wrap">
+      <div class="section-header">
+        <span class="sec-number" aria-hidden="true">01</span>
+        <h2 class="sec-title">WHO WE ARE</h2>
+      </div>
+      <div class="about-body">
+        <div class="body-block">
+          <p>AeroBMSCE is the official aerospace, aeromodelling, and unmanned systems innovation club of BMS College of Engineering, operating from Propel Lab-3. Established in 2012, the club brings together engineers from 10+ departments to design, build, and test advanced aircraft, drones, and autonomous systems.</p>
+        </div>
+        <div class="body-block vision-block">
+          <h3 class="sub-heading">OUR VISION</h3>
+          <p>We envision AeroBMSCE as a leading aerospace and unmanned systems research group, renowned for design excellence, innovation, and competitive success on the international stage.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <h4 class="sec">WHY IT MATTERS</h4>
-  <ul>
-    <li>Engineers trained on real constraints</li>
-    <li>Talent exposure before graduation</li>
-    <li>Brand visibility in elite technical ecosystems</li>
-  </ul>
+  <!-- 02. WHAT WE DO SECTION -->
+  <section class="content-section what-we-do-section" id="what-we-do" data-phase="Takeoff">
+    <div class="wrap">
+      <div class="section-header">
+        <span class="sec-number" aria-hidden="true">02</span>
+        <h2 class="sec-title">WHAT WE DO</h2>
+      </div>
+      <div class="two-col">
+        <div class="body-block">
+          <h3 class="sub-heading">TECHNICAL DOMAINS</h3>
+          <ul>
+            <li>Competitive aircraft &amp; UAV design</li>
+            <li>Drone racing &amp; autonomy</li>
+            <li>Industry-grade fabrication &amp; testing</li>
+            <li>Talent development through real-world engineering</li>
+          </ul>
+        </div>
+        <div class="body-block">
+          <h3 class="sub-heading">WHY IT MATTERS</h3>
+          <ul>
+            <li>Engineers trained on real constraints</li>
+            <li>Talent exposure before graduation</li>
+            <li>Brand visibility in elite technical ecosystems</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <h4 class="sec">OUR VISION</h4>
-  <p>We envision AeroBMSCE as a leading aerospace and unmanned systems research group, renowned for design excellence, innovation, and competitive success. We aim to cultivate future leaders in the aerospace and drone industry, establishing a legacy of engineering excellence that inspires students worldwide.</p>
+  <!-- 03. STATS SECTION -->
+  <section class="stats-section" id="stats" data-phase="Takeoff">
+    <!-- Radar Sweep Telemetry Background -->
+    <svg class="stats-radar" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+      <g stroke="rgba(95,168,211,0.06)" fill="none">
+        <circle cx="400" cy="200" r="80"/>
+        <circle cx="400" cy="200" r="150"/>
+        <circle cx="400" cy="200" r="220"/>
+        <circle cx="400" cy="200" r="290"/>
+        <circle cx="400" cy="200" r="360"/>
+        <line x1="400" y1="0" x2="400" y2="400" stroke-width="0.5"/>
+        <line x1="200" y1="200" x2="600" y2="200" stroke-width="0.5"/>
+        <line x1="260" y1="60" x2="540" y2="340" stroke-width="0.5"/>
+        <line x1="260" y1="340" x2="540" y2="60" stroke-width="0.5"/>
+        <line x1="400" y1="200" x2="400" y2="50" stroke="rgba(95,168,211,0.15)" stroke-width="1" class="radar-sweep"/>
+      </g>
+    </svg>
+    <div class="wrap">
+      <div class="section-header">
+        <span class="sec-number" aria-hidden="true">03</span>
+        <h2 class="sec-title">BY THE NUMBERS</h2>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-num"><span class="counter" data-target="16">0</span><span>+</span></div>
+          <div class="stat-label">Years Active</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num"><span class="counter" data-target="75">0</span><span>+</span></div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num"><span class="counter" data-target="20">0</span><span>+</span></div>
+          <div class="stat-label">Podium Finishes</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num"><span class="counter" data-target="10">0</span><span>+</span></div>
+          <div class="stat-label">Departments Represented</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num"><span class="counter" data-target="50">0</span><span>+</span></div>
+          <div class="stat-label">Research Papers &amp; Certifications</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num"><span class="counter" data-target="4">0</span><span></span></div>
+          <div class="stat-label">Active Competing Teams</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <p style="margin-top:30px">Want to know more about what we have achieved? <a href="journey.html">Click here</a>. Interested in working with us? <a href="partners.html">Click here</a>.</p>
+  <!-- 04. OUR FLEET -->
+  <section class="content-section fleet-section" id="fleet" data-phase="Cruise">
+    <div class="wrap">
+      <div class="section-header">
+        <span class="sec-number" aria-hidden="true">04</span>
+        <h2 class="sec-title">OUR FLEET</h2>
+      </div>
+      <div class="fleet-filter-bar" id="fleetFilter" aria-label="Fleet category filter">
+        <!-- Rendered dynamically by js/render/renderFleet.js and controlled by js/ui/fleetFilter.js -->
+        <button class="fleet-filter-btn active" data-filter="all" type="button">ALL PLATFORMS</button>
+        <button class="fleet-filter-btn" data-filter="Fixed-wing" type="button">FIXED-WING</button>
+        <button class="fleet-filter-btn" data-filter="Multirotor" type="button">MULTIROTOR</button>
+      </div>
+      <div class="fleet-grid">
+        <!-- Aircraft cards with blueprint-slot and dimensional data attributes rendered dynamically -->
+        <div class="fleet-card blueprint-slot body-block"
+             id="yaksha-micro-24"
+             data-category="Fixed-wing"
+             data-span-mm="1200"
+             data-chord-mm="220"
+             data-mass-g="1850"
+             data-phase="Cruise">
+          <div class="fleet-image-wrap">
+            <picture>
+              <source type="image/webp" srcset="images/cad-plane.webp">
+              <img src="images/cad-plane.png" alt="Yaksha Micro-24" class="fleet-img" width="400" height="240" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="fleet-header">
+            <span class="fleet-cat">Fixed-wing</span>
+            <span class="fleet-phase badge-mono">Cruise</span>
+          </div>
+          <h3 class="fleet-name">Yaksha Micro-24</h3>
+          <p class="fleet-desig">SAE Aero Design Micro Class</p>
+          <div class="fleet-specs-table">
+            <div class="spec-row"><span class="spec-k">WINGSPAN:</span><span class="spec-v">1200 mm</span></div>
+            <div class="spec-row"><span class="spec-k">MOTOR:</span><span class="spec-v">Brushless Electric Outrunner</span></div>
+            <div class="spec-row"><span class="spec-k">WEIGHT:</span><span class="spec-v">1850 g</span></div>
+            <div class="spec-row"><span class="spec-k">ROLE:</span><span class="spec-v">SAE Aero Design Micro Class</span></div>
+          </div>
+          <div class="fleet-footer">
+            <span class="fleet-comp">SAE International Aero Design West (Texas, USA)</span>
+          </div>
+        </div>
 
-</div>
+        <div class="fleet-card blueprint-slot body-block"
+             id="phantom-hex"
+             data-category="Multirotor"
+             data-span-mm="850"
+             data-chord-mm="0"
+             data-mass-g="2400"
+             data-phase="Takeoff">
+          <div class="fleet-image-wrap">
+            <picture>
+              <source type="image/webp" srcset="images/photo8.webp">
+              <img src="images/photo8.jpg" alt="Phantom Autonomous Hexacopter" class="fleet-img" width="400" height="240" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="fleet-header">
+            <span class="fleet-cat">Multirotor</span>
+            <span class="fleet-phase badge-mono">Takeoff</span>
+          </div>
+          <h3 class="fleet-name">Phantom Autonomous Hexacopter</h3>
+          <p class="fleet-desig">Autonomous Survey &amp; Delivery UAV</p>
+          <div class="fleet-specs-table">
+            <div class="spec-row"><span class="spec-k">WINGSPAN:</span><span class="spec-v">850 mm</span></div>
+            <div class="spec-row"><span class="spec-k">MOTOR:</span><span class="spec-v">6x High-Efficiency Brushless</span></div>
+            <div class="spec-row"><span class="spec-k">WEIGHT:</span><span class="spec-v">2400 g</span></div>
+            <div class="spec-row"><span class="spec-k">ROLE:</span><span class="spec-v">Autonomous Survey &amp; Delivery UAV</span></div>
+          </div>
+          <div class="fleet-footer">
+            <span class="fleet-comp">SAE Drone Design Challenge &amp; SAE Aerothon</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Prompt 3 Signature Feature Calculator Hook -->
+      <div id="calculator" class="calculator-slot body-block" aria-label="Flight performance calculator"></div>
+    </div>
+  </section>
 
+  <!-- 05. ACHIEVEMENTS & MILESTONES -->
+  <section class="content-section milestones-section" id="achievements" data-phase="Cruise">
+    <a id="milestones" aria-hidden="true"></a>
+    <div class="wrap">
+      <div class="section-header">
+        <span class="sec-number" aria-hidden="true">05</span>
+        <h2 class="sec-title">OUR JOURNEY &amp; MILESTONES</h2>
+      </div>
+      <p class="credit body-block">16+ years &nbsp;|&nbsp; 75+ projects &nbsp;|&nbsp; 20+ podium finishes &nbsp;|&nbsp; International flight history</p>
+      
+      <div id="timeline" class="timeline-wrapper">
+        <div class="milestones-grid">
+          <div class="ms body-block" data-year="2026">
+            <span class="ms-year">2026 SEASON</span><br>
+            <b>SAE International Aero Design West</b><br>
+            2nd Place Internationally under MATLAB Simulation Awards. Overall #16 Globally in Micro Class — Fort Worth, Texas, USA<br><br>
+            <b>SAE Aerothon</b><br>
+            1st Place under Unique Technology Development at ADDC 2026.
+          </div>
+          <div class="ms body-block" data-year="2025">
+            <span class="ms-year">2025 SEASON</span><br>
+            <b>SAE Aerothon</b><br>2nd place overall, ₹1,25,000 cash prize (Nov 2025)<br><br>
+            <b>SAE-Drone Design Challenge</b><br>1st place — Best Technical Presentation, ₹10,000 cash prize (May 2025)<br><br>
+            <b>SAE Autonomous Drone Design Challenge</b><br>1st place — Best Innovation ₹5,000 cash prize (April 2025)
+          </div>
+          <div class="ms body-block" data-year="2024">
+            <span class="ms-year">2024 SEASON</span><br>
+            <b>NITK Drone Racing Competition</b><br>2nd place (Oct 18-20, 2024)<br><br>
+            <b>Global Academy of Technology</b><br>1st place (Nov 2024)<br><br>
+            <b>SAE International Aero Design West</b><br>12th place globally (Aug 2024)
+          </div>
+          <div class="ms body-block" data-year="2022">
+            <span class="ms-year">2022 &amp; EARLIER</span><br>
+            <b>SAE Aerothon</b><br>3rd place, ₹50,000 cash prize<br><br>
+            <b>AI-VTOL — Techfest, IIT Bombay</b><br>4th place nationally<br><br>
+            <b>SAE Aero Design West</b><br>8th place globally (2020)<br><br>
+            <b>SAE INDIA</b><br>1st place overall, ₹1,00,000 cash prize (2020)
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06. PREVIOUS EVENTS GALLERY -->
+  <section class="content-section previous-events-section" id="previous-events" data-phase="Cruise">
+    <div class="wrap">
+      <div class="section-header">
+        <span class="sec-number" aria-hidden="true">06</span>
+        <h2 class="sec-title">FLIGHT TRIALS &amp; GALLERY</h2>
+      </div>
+      <div class="gallery body-block">
+        <div class="gallery-item">
+          <picture>
+            <source type="image/webp" srcset="images/photo5-480w.webp 480w, images/photo5-800w.webp 800w, images/photo5.webp 1178w" sizes="(max-width: 600px) 100vw, 25vw">
+            <img src="images/photo5.jpg" alt="AeroBMSCE competition preparation" width="1178" height="833" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <div class="gallery-item">
+          <picture>
+            <source type="image/webp" srcset="images/photo6-480w.webp 480w, images/photo6-800w.webp 800w, images/photo6-1280w.webp 1280w" sizes="(max-width: 600px) 100vw, 25vw">
+            <img src="images/photo6.jpg" alt="AeroBMSCE technical inspection" width="1556" height="1037" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <div class="gallery-item">
+          <picture>
+            <source type="image/webp" srcset="images/photo7-480w.webp 480w, images/photo7-800w.webp 800w, images/photo7.webp 900w" sizes="(max-width: 600px) 100vw, 25vw">
+            <img src="images/photo7.jpg" alt="AeroBMSCE telemetry review" width="900" height="1200" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <div class="gallery-item">
+          <picture>
+            <source type="image/webp" srcset="images/photo8-480w.webp 480w, images/photo8-800w.webp 800w, images/photo8.webp 3000w" sizes="(max-width: 600px) 100vw, 25vw">
+            <img src="images/photo8.jpg" alt="AeroBMSCE autonomous UAV flight" width="3000" height="2000" loading="lazy" decoding="async">
+          </picture>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07. CONTACT & COMMUNITY -->
+  <section class="content-section contact-section" id="contact" data-phase="Landing">
+    <div class="wrap">
+
+      <!-- Section header -->
+      <div class="section-header">
+        <span class="sec-number" aria-hidden="true">07</span>
+        <h2 class="sec-title">CONTACT &amp; COMMUNITY</h2>
+      </div>
+
+      <!-- Contact & Community Grid -->
+      <div class="contact-grid">
+        <div class="contact-block">
+          <h3>CONTACT US</h3>
+          <p>General &amp; recruitment enquiries:</p>
+          <p><strong>Rajesh</strong> — Lead</p>
+          <p>E-Mail: <a href="mailto:aerobmsce@bmsce.ac.in">aerobmsce@bmsce.ac.in</a></p>
+        </div>
+        <div class="contact-block">
+          <h3>COMMUNITY</h3>
+          <p>Join the AeroBMSCE community for announcements, technical workshops, and team recruitment.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/bmsceaero/" class="btn-outline" target="_blank" rel="noopener">Instagram</a>
+          </div>
+          <!-- Clearance Application Form Hook -->
+          <div id="clearance-form" class="clearance-form-slot" aria-label="Enquiry form"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Partner recognition band; use one optimized WebP for each logo. -->
+  <section class="partners-band" aria-labelledby="home-partners-title">
+    <div class="wrap partners-band-inner">
+      <h2 id="home-partners-title">Our partners</h2>
+      <ul class="partner-logo-list" aria-label="AeroBMSCE partners">
+        <li><img src="images/altair.webp" alt="Altair"></li>
+        <li><img src="images/ansys.webp" alt="ANSYS"></li>
+        <li><img src="images/csir-nal.webp" alt="CSIR–National Aerospace Laboratories"></li>
+        <li><img src="images/drdo.webp" alt="DRDO"></li>
+        <li><img src="images/drkstore.webp" alt="DRK Store"></li>
+        <li><img src="images/flow5.webp" alt="FLOW-5"></li>
+        <li><img src="images/siemens.webp" alt="Siemens"></li>
+        <li><img src="images/simscale.webp" alt="SimScale"></li>
+        <li><img src="images/solidworks.webp" alt="SOLIDWORKS"></li>
+        <li><img src="images/uav-marketplace.webp" alt="UAV Marketplace"></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Partner callout -->
+  <section class="partner-callout" aria-labelledby="partner-callout-title">
+    <div class="wrap partner-callout-inner">
+      <div><span class="partner-kicker">BUILD THE NEXT FLIGHT</span>
+        <h2 id="partner-callout-title">Partner with AeroBMSCE</h2>
+        <p>Help student engineers take their aircraft from the workshop to the competition field.</p>
+      </div>
+      <button class="fly-btn partner-flight-button" type="button" data-target="partner.html" aria-label="Partner with us">
+        <span class="label">Partner with us</span>
+        <span class="plane" aria-hidden="true"><img src="images/partner-plane.svg" alt="" width="44" height="44"></span>
+      </button>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- 11. SITE FOOTER -->
+  <footer class="site-footer" id="footer" data-phase="Landing">
+    <svg class="footer-horizon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" height="40" width="100%">
+      <line x1="0" y1="20" x2="100%" y2="20" stroke="rgba(95,168,211,0.12)" stroke-width="1"/>
+      <ellipse cx="50%" cy="20" rx="80" ry="12" fill="none" stroke="rgba(95,168,211,0.07)" stroke-width="0.5"/>
+      <ellipse cx="50%" cy="20" rx="160" ry="22" fill="none" stroke="rgba(95,168,211,0.04)" stroke-width="0.5"/>
+    </svg>
+    <div class="wrap footer-inner">
+      <picture><source type="image/webp" srcset="images/cad-plane.webp"><img src="images/cad-plane.png" alt="AeroBMSCE CAD plane" class="footer-plane" width="100" height="68" loading="lazy" decoding="async"></picture>
+      <p class="footer-copy">&copy; 2026 AeroBMSCE — BMS College of Engineering, Bangalore.</p>
+      <button class="btn-outline back-to-top" id="backToTop" aria-label="Back to top">Top</button>
+    </div>
+  </footer>
+
+  <!-- CDN SCRIPTS (Pinned versions with defer) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <!-- ES Module Application Entrypoint -->
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>

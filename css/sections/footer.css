@@ -1,0 +1,41 @@
+/**
+ * css/sections/footer.css — Site footer, CAD aircraft icon, copyright, and top navigation
+ * Depends on: css/base.css, css/layout.css
+ * Touches: .site-footer, .footer-inner, .footer-plane, .footer-copy
+ */
+
+.site-footer {
+  padding: 40px 0 56px;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg);
+  position: relative;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-plane {
+  width: 100px;
+  height: auto;
+  opacity: 0.6;
+}
+
+.footer-copy {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+}

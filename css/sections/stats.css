@@ -1,0 +1,61 @@
+/**
+ * css/sections/stats.css — Club telemetry stats grid and counter cards
+ * Depends on: css/base.css, css/layout.css
+ * Touches: .stats-section, .stats-grid, .stat-item, .stat-num, .stat-label
+ * Palette: stat numbers use --color-text (off-white), labels use --color-muted
+ */
+
+.stats-section {
+  padding: 80px 0;
+  position: relative;
+  background: var(--color-bg);
+  overflow: hidden;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 28px 16px;
+  background: rgba(19, 29, 49, 0.4);
+  border: 1px solid var(--color-border);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: border-color 0.3s ease;
+}
+
+.stat-item:hover {
+  border-color: rgba(95, 168, 211, 0.3);
+}
+
+/* Large numbers use off-white (--color-text), NOT the accent */
+.stat-num {
+  font-family: var(--font-mono);
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+/* Small mono labels use --color-muted at normal letter-spacing */
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+

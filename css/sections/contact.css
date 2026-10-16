@@ -1,0 +1,59 @@
+/**
+ * css/sections/contact.css — Contact Us & Community section (#contact)
+ * Depends on: css/base.css, css/layout.css, css/components.css
+ * Touches: #contact, .contact-section, .contact-grid, .contact-block, .social-links
+ */
+
+#contact,
+.contact-section {
+  position: relative;
+  background: var(--color-bg);
+  padding: 80px 0;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.contact-block {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 24px;
+}
+
+.contact-block h3 {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  color: var(--color-text);
+  margin: 0 0 16px;
+  letter-spacing: 0.06em;
+}
+
+.contact-block p {
+  margin: 6px 0;
+  font-size: 15px;
+  color: var(--color-text);
+}
+
+.social-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+#clearance-form,
+.clearance-form-slot {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}

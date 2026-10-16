@@ -1,0 +1,82 @@
+/**
+ * css/sections/achievements.css — Flight history, podium finishes, and milestone cards
+ * Depends on: css/base.css, css/layout.css
+ * Touches: #achievements, #milestones, .milestones-grid, .ms, .ms-year, #timeline
+ */
+
+#achievements,
+.milestones-section {
+  position: relative;
+  background: var(--color-bg);
+}
+
+.milestones-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.ms {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent);
+  padding: 20px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-muted);
+}
+
+.ms b {
+  color: var(--color-text);
+}
+
+.ms-year {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-accent);
+  letter-spacing: 0.12em;
+  display: block;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+  .milestones-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Flight Path SVG overlay ─────────────────────────────── */
+.timeline-wrapper {
+  position: relative; /* anchor for the absolutely-positioned SVG */
+}
+
+#flight-path-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100%;
+  pointer-events: none; /* never intercept clicks */
+  z-index: 0;
+  overflow: visible;
+}
+
+/* Keep milestone grid above the SVG */
+.milestones-grid {
+  position: relative;
+  z-index: 1;
+}
+
+.fp-path {
+  /* stroke-dasharray / stroke-dashoffset driven by JS */
+  will-change: stroke-dashoffset;
+}
+
+#fp-plane {
+  /* transform driven by JS via setAttribute; GPU-composited */
+  will-change: transform;
+  transition: opacity 0.3s ease;
+}
+

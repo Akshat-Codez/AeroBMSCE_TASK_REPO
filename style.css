@@ -1,124 +1,315 @@
-body {
+/* Modern, premium styling for AeroBMSCE website */
+
+/* ----------- CSS Variables for Theming ----------- */
+:root {
+  --bg-dark:        #0B0F19;
+  --bg-primary:     #0B0F19;
+  --bg-accent:      #131D31;
+  --color-primary:  #5FA8D3;
+  --color-secondary:#94A3B8;
+  --color-muted:    #94A3B8;
+  --color-light:    #E5E9F0;
+  --font-sans:      'IBM Plex Sans', -apple-system, sans-serif;
+  --font-mono:      'IBM Plex Mono', monospace;
+}
+
+/* ----------- Global Reset & Base ----------- */
+*, *::before, *::after {
+  box-sizing: border-box;
   margin: 0;
-  background: #141414;
-  color: #707070;
-  font-family: "Times New Roman", serif;
-  font-size: 13px;
+  padding: 0;
 }
 
-.notice {
-  background: #2a2a2a;
-  color: #888;
-  font-family: Arial, sans-serif;
-  font-size: 11px;
-  padding: 4px 10px;
+html {
+  scroll-behavior: auto; /* Lenis takes over */
 }
 
+html, body {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  background: var(--bg-primary);
+  color: var(--color-muted);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ----------- Typography ----------- */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+
+p { color: var(--color-muted); margin-bottom: 0.8em; }
+p:last-child { margin-bottom: 0; }
+
+ul { padding-left: 18px; }
+li { color: var(--color-muted); margin-bottom: 5px; line-height: 1.5; }
+
+/* ----------- Utility ----------- */
 .wrap {
-  width: 1480px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
 }
 
-/* header + nav */
+.clear { clear: both; }
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+a:hover { opacity: 0.82; }
+a:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
+
+/* ----------- Notice Bar ----------- */
+.notice {
+  background: rgba(30, 30, 30, 0.9);
+  color: var(--color-light);
+  font-size: 11px;
+  padding: 6px 16px;
+  text-align: center;
+  position: relative;
+  z-index: 1001;
+}
+
+/* ----------- Nav ----------- */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.nav-link, .nav a {
+  margin-left: 22px;
+  color: var(--color-primary);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.nav-link:first-child { margin-left: 0; }
+
+.credit {
+  font-family: var(--font-mono);
+  color: var(--color-primary);
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+.clear { clear: both; }
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+a:hover { opacity: 0.8; }
+
+a:focus { outline: 2px solid var(--color-primary); }
+
+/* ----------- Notice Bar (Glassmorphism) ----------- */
+.notice {
+  background: rgba(28, 28, 28, 0.95);
+  color: var(--color-light);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  padding: 8px 12px;
+  text-align: center;
+}
+
+/* ----------- Header & Navigation ----------- */
 .top {
-  background: #7b2339;
-  padding: 10px 0;
+  background: var(--color-bg);
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
 .top img {
-  width: 420px;
-  height: 200px;
+  width: 180px;
+  height: auto;
   float: left;
 }
 .nav {
   float: right;
-  margin-top: 90px;
-  font-family: "Trebuchet MS", sans-serif;
-  font-size: 12px;
+  margin-top: 30px;
+  font-family: var(--font-sans);
+  font-size: 13px;
 }
 .nav a {
-  margin-left: 22px;
-  color: #d08aa0;
+  margin-left: 20px;
+  color: var(--color-primary);
+  font-weight: 500;
 }
-.clear { clear: both; }
 
-a { color: #a03358; text-decoration: none; }
-a:hover { text-decoration: none; }
-a:focus { outline: none; }
+/* ----------- Hero Intro (title above photo) ----------- */
+.hero-intro {
+  background: var(--color-bg);
+  padding: 28px 0;
+}
+.hero-intro h1 {
+  color: var(--color-primary);
+  font-size: 44px;
+  margin-bottom: 6px;
+}
+.hero-intro p {
+  color: var(--color-primary);
+  font-size: 13px;
+  margin: 0;
+}
+.hero-intro .tag {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: var(--color-secondary);
+}
 
-/* hero */
+/* ----------- Hero Section (photo only, no overlay) ----------- */
 .hero {
   height: 420px;
-  background: url(images/photo2.jpg) center 70% / cover;
+  background: url('images/photo2.jpg') center / cover no-repeat;
 }
-.hero .box {
-  width: 520px;
-  margin-left: 60px;
-  position: relative;
-  top: 90px;
-  padding: 24px 28px;
-  background: url(images/bg.jpg);
-}
-.hero h1 { color: #f5b730; font-family: Arial, sans-serif; font-size: 44px; margin: 0 0 8px 0; }
-.hero p { color: #f5b730; font-size: 13px; margin: 0; }
-.hero .tag { font-size: 18px; margin-bottom: 10px; }
 
-.banner { width: 1480px; height: 160px; display: block; }
-
-/* headings */
-h4.sec {
-  color: #f5b730;
-  font-family: Impact, "Arial Black", sans-serif;
-  font-size: 22px;
-  font-weight: normal;
-  margin: 40px 0 8px 0;
+.hero h1 {
+  color: var(--color-primary);
+  font-size: 48px;
+  margin-bottom: 0.4em;
 }
-h1.sec {
-  color: #f5b730;
-  font-family: Impact, "Arial Black", sans-serif;
-  font-size: 26px;
-  font-weight: normal;
-  margin: 40px 0 8px 0;
-}
-h2.sub {
-  color: #f5b730;
-  font-family: "Trebuchet MS", sans-serif;
+.hero p {
+  color: var(--color-primary);
   font-size: 15px;
-  margin: 24px 0 6px 0;
+}
+.hero .tag {
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: var(--color-secondary);
 }
 
-p, li { line-height: 1.3; }
-li { margin-bottom: 3px; }
+/* ----------- Banner Image ----------- */
+.banner {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+}
 
-/* journey page */
-.slide-box { float: right; width: 420px; margin-left: 30px; }
+/* ----------- Section Headings ----------- */
+h4.sec {
+  color: var(--color-primary);
+  font-family: 'Impact', 'Arial Black', sans-serif;
+  font-size: 22px;
+  margin: 40px 0 8px;
+}
+
+/* ----------- Content Lists ----------- */
+ul {
+  padding-left: 20px;
+}
+li {
+  margin-bottom: 6px;
+}
+
+/* ----------- Journey Page Specific ----------- */
+.slide-box {
+  float: right;
+  width: 420px;
+  margin-left: 30px;
+}
 #slide { width: 420px; }
-.gallery img { width: 300px; height: 170px; margin: 0 14px 14px 0; }
+.gallery img {
+  width: 300px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 0 14px 14px 0;
+}
+
 .ms {
-  background: #6a1b34;
-  color: #d8c3c9;
+  background: var(--bg-accent);
+  color: var(--color-secondary);
   padding: 16px 20px;
   font-size: 12px;
   line-height: 1.25;
   margin-top: 10px;
+  border-radius: 6px;
 }
-.credit { color: #f5b730; font-size: 15px; font-weight: bold; }
 
-/* tiers */
-table.tiers { width: 1440px; border-collapse: collapse; margin-top: 10px; }
+.credit {
+  color: var(--color-primary);
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* ----------- Tiers Table ----------- */
+table.tiers {
+  width: 100%;
+  max-width: 1440px;
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
 table.tiers td {
-  width: 360px;
-  background: #6a1b34;
-  color: #d8c3c9;
+  background: var(--bg-accent);
+  color: var(--color-secondary);
   font-size: 11px;
+  padding: 12px;
+  border: 1px solid var(--bg-dark);
   vertical-align: top;
-  padding: 10px;
-  border: 1px solid #141414;
+  border-radius: 6px;
 }
+
 table.tiers td img { width: 40px; height: 40px; }
-table.tiers td b { color: #f5b730; font-size: 14px; }
 
-/* logos */
-.logos img { width: 140px; height: 60px; margin: 6px 22px 6px 0; }
+table.tiers td b { color: var(--color-primary); font-size: 14px; }
 
-.footer { margin: 60px 0 20px 0; font-size: 10px; color: #555; }
+/* ----------- Logos ----------- */
+.logos img {
+  width: 140px;
+  height: 60px;
+  margin: 6px 22px 6px 0;
+  filter: grayscale(20%);
+  transition: transform 0.3s ease;
+}
+.logos img:hover { transform: scale(1.05); }
+
+/* ----------- Footer ----------- */
+.footer {
+  margin: 60px 0 20px;
+  font-size: 10px;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+/* ----------- Responsive Design ----------- */
+@media (max-width: 1024px) {
+  .wrap { padding: 0 15px; }
+  .hero .box { margin-left: 30px; }
+  .banner { height: auto; }
+}
+@media (max-width: 768px) {
+  .top img { width: 120px; }
+  .nav { margin-top: 20px; font-size: 12px; }
+  .hero { flex-direction: column; height: auto; padding: 40px 0; }
+  .hero .box { margin: 0 auto; }
+  .slide-box, #slide { float: none; width: 100%; margin: 0 auto 20px; }
+  table.tiers td { display: block; width: 100%; margin-bottom: 10px; }
+}
+
+/* ----------- Animations ----------- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.notice, .hero .box, .ms, .logos img {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+

@@ -1,0 +1,226 @@
+/**
+ * css/sections/navbar.css — Site header, sticky navigation bar, and notice banner
+ * Depends on: css/base.css
+ * Touches: .site-header, .header-inner, .header-logo, .nav, .nav-link, .notice
+ * Palette: --color-accent for active underline, --color-text for hover, --color-border for divider
+ */
+
+.notice {
+  background: rgba(11, 15, 25, 0.97);
+  color: var(--color-muted);
+  font-family: var(--font-body);
+  font-size: 13px;
+  padding: 8px 12px;
+  text-align: center;
+}
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  z-index: 1000;
+  background: rgba(11, 15, 25, 0.92);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+  transition: transform 0.35s ease;
+}
+
+@supports not ((-webkit-backdrop-filter: blur(8px)) or (backdrop-filter: blur(8px))) {
+  .site-header {
+    background: var(--color-bg);
+  }
+}
+
+.site-header.header-hidden {
+  transform: translateY(-100%);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 5%;
+  max-width: 100%;
+}
+
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  height: 100%;
+  text-decoration: none;
+}
+
+.header-logo {
+  height: 62px; /* ~78% of 80px navbar height */
+  width: auto;
+  max-height: 62px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 0 1px rgba(95, 168, 211, 0.5));
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.logo-link:hover .header-logo {
+  filter: drop-shadow(0 0 3px rgba(95, 168, 211, 0.8));
+  transform: scale(1.04);
+}
+
+.logo-text {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .logo-text {
+    display: none;
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-link {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  color: var(--color-muted);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-text);
+}
+
+/* Active underline uses --color-accent (the ONLY accent color) */
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  left: 12px;
+  right: 12px;
+  height: 2px;
+  background: var(--color-accent);
+}
+
+/* Mobile Hamburger Button (Desktop: hidden, Mobile: 44px accessible touch target) */
+.mobile-menu-btn {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.mobile-menu-btn:hover,
+.mobile-menu-btn:focus-visible {
+  border-color: var(--color-accent);
+  outline: none;
+}
+
+.hamburger-bar {
+  width: 22px;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 1px;
+  transition: transform 0.25s ease, opacity 0.25s ease, background 0.2s ease;
+}
+
+.mobile-menu-btn[aria-expanded="true"] .hamburger-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+  background: var(--color-accent);
+}
+.mobile-menu-btn[aria-expanded="true"] .hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+.mobile-menu-btn[aria-expanded="true"] .hamburger-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+  background: var(--color-accent);
+}
+
+@media (max-width: 768px) {
+  .header-logo {
+    height: 42px;
+    max-height: 42px;
+    width: auto;
+  }
+  .mobile-menu-btn {
+    display: flex;
+  }
+  .nav {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: rgba(11, 15, 25, 0.98);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--color-border);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px 20px 20px;
+    gap: 4px;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.7);
+    z-index: 999;
+  }
+  .nav.nav-open {
+    display: flex;
+  }
+  .nav-link {
+    min-height: 44px;
+    padding: 10px 14px;
+    font-size: 15px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+  }
+  .nav-link.active::after {
+    bottom: 0;
+    left: 14px;
+    right: 14px;
+  }
+}
+
+.jump-btn {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  padding: 6px 14px;
+  margin-left: 12px;
+  color: var(--color-accent);
+  border: 1px solid rgba(95, 168, 211, 0.35);
+  background: rgba(19, 29, 49, 0.4);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.jump-btn:hover {
+  background: rgba(95, 168, 211, 0.15);
+  border-color: var(--color-accent);
+}
+

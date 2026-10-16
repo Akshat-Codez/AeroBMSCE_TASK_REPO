@@ -1,0 +1,50 @@
+/**
+ * css/sections/join.css — Recruitment calls, department requirements, and join CTA (#join)
+ * Depends on: css/base.css, css/layout.css
+ * Touches: #join, .join-section, .join-grid
+ */
+
+#join,
+.join-section {
+  position: relative;
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+}
+
+.join-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+@media (max-width: 768px) {
+  .join-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* Partner callout and button-contained aircraft takeoff. */
+.partner-callout {
+  padding: 64px 0;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+.partner-callout-inner { display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+.partner-callout h2 { margin: 6px 0; color: var(--color-text); font: 700 clamp(28px, 4vw, 42px)/1.1 var(--font-heading); }
+.partner-callout p { max-width: 600px; margin: 0; color: var(--color-muted); }
+.partner-kicker { color: var(--color-accent); font: 12px var(--font-mono); letter-spacing: .12em; }
+/* Reuse the exact hero CTA treatment; keep this takeoff to a one-second climb. */
+.partner-flight-button { flex: 0 0 auto; }
+.partner-flight-button .plane img { width: 44px; height: 44px; object-fit: contain; }
+.partner-flight-button.flying .plane { animation: partner-flight 1s linear forwards; }
+@keyframes partner-flight {
+  0%   { transform: translate(-70px, -50%) rotate(0deg); }
+  25%  { transform: translate(40px, calc(-50% - 4px)) rotate(-7deg); }
+  60%  { transform: translate(130px, calc(-50% - 13px)) rotate(-15deg); }
+  100% { transform: translate(290px, calc(-50% - 28px)) rotate(-23deg); }
+}
+@media (max-width: 768px) {
+  .partner-callout-inner { align-items: flex-start; flex-direction: column; }
+}
+@media (prefers-reduced-motion: reduce) { .partner-flight-button.flying .plane { animation-duration: 0.01ms; } }

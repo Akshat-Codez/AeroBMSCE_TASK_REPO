@@ -1,0 +1,144 @@
+/**
+ * css/sections/hero.css — Hero section typography, systems-check telemetry, and team photo showcase
+ * Depends on: css/base.css, css/layout.css, css/components.css
+ * Palette: headline = --color-text (off-white), sub = --color-muted, accent = --color-accent sparingly
+ */
+
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 120px;
+  padding-bottom: 60px;
+  background: var(--color-bg);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.hero-text {
+  flex: 1;
+  max-width: 800px;
+}
+
+.hero-line-mask {
+  overflow: hidden;
+}
+
+.hero-headline {
+  font-family: var(--font-heading);
+  font-size: clamp(42px, 7vw, 90px);
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.05;
+  margin: 0 0 12px;
+  transform: translateY(110%);
+}
+
+.hero-tag {
+  font-size: clamp(14px, 2vw, 20px);
+  color: var(--color-muted);
+  margin: 0 0 12px;
+  transform: translateY(110%);
+}
+
+.hero-sub {
+  font-family: var(--font-mono);
+  font-size: clamp(12px, 1.3vw, 15px);
+  color: var(--color-accent);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0 0 28px;
+  transform: translateY(110%);
+}
+
+.hero-cta {
+  transform: translateY(110%);
+  display: inline-flex;
+}
+
+/* ── Systems Check Readout (Top Right) ── */
+.systems-check {
+  position: absolute;
+  top: 110px;
+  right: 0;
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(95, 168, 211, 0.5);
+  line-height: 1.8;
+  pointer-events: none;
+}
+
+.sc-line {
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+/* ── Unobstructed Team Photo Banner Showcase ── */
+.hero-team-banner {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+}
+
+.team-photo-frame {
+  position: relative;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  overflow: hidden;
+  transition: transform 0.15s ease;
+}
+
+.team-photo-img {
+  width: 100%;
+  height: clamp(300px, 52vh, 600px);
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+  transform: scale(1.02);
+  transition: transform 0.8s ease;
+}
+
+.team-photo-frame:hover .team-photo-img {
+  transform: scale(1.0);
+}
+
+.photo-caption-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-muted);
+  letter-spacing: 0.08em;
+}
+
+.caption-loc {
+  color: var(--color-muted);
+  font-size: 11px;
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+  }
+  .systems-check {
+    display: none;
+  }
+}
