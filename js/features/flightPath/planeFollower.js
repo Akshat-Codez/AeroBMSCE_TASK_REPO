@@ -2,7 +2,7 @@
  * js/features/flightPath/planeFollower.js — Moves inline aircraft SVG along the drawn path
  * Purpose: On each scroll tick, read the path's draw progress and move the plane icon
  *          to the corresponding point on the path using getPointAtLength.
- * Dependencies: drawOnScroll.js (pathEl, pathLength, getDrawProgress), window.gsap
+ * Dependencies: drawOnScroll.js, window.gsap
  * Touches: #fp-plane (SVG group)
  */
 
@@ -11,7 +11,6 @@ import { prefersReducedMotion } from '../../core/device.js';
 let planeEl   = null;
 let pathEl    = null;
 let pathLen   = 0;
-let animFrame = null;
 
 /**
  * @param {SVGGElement} planeGroup - the SVG aircraft icon element
@@ -49,12 +48,5 @@ function tick() {
     planeEl.style.opacity = '0';
   }
 
-  animFrame = requestAnimationFrame(tick);
-}
-
-export function stopPlaneFollower() {
-  if (animFrame) {
-    cancelAnimationFrame(animFrame);
-    animFrame = null;
-  }
+  requestAnimationFrame(tick);
 }

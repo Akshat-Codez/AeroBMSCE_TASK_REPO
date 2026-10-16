@@ -76,8 +76,14 @@ export function initRenderFleet() {
       <div class="fleet-image-wrap">
         <picture>
           ${plane.webp ? `<source type="image/webp" srcset="${plane.webp}">` : ''}
-          <img src="${plane.image}" alt="${plane.name}" class="fleet-img" width="400" height="240" loading="lazy" decoding="async">
+          <img src="${plane.image}" alt="${plane.imageAlt || plane.name}" class="fleet-img" width="400" height="240" loading="lazy" decoding="async">
         </picture>
+        ${plane.secondaryImage ? `
+          <picture class="fleet-image-secondary">
+            ${plane.secondaryWebp ? `<source type="image/webp" srcset="${plane.secondaryWebp}">` : ''}
+            <img src="${plane.secondaryImage}" alt="${plane.secondaryAlt || `${plane.name} alternate view`}" width="160" height="96" loading="lazy" decoding="async">
+          </picture>
+        ` : ''}
       </div>
     ` : '';
 

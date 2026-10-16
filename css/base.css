@@ -24,16 +24,6 @@
   --color-muted:        #94A3B8;
   --color-border:       rgba(148, 163, 184, 0.15);
 
-  /* Aliases kept for backward compat with existing CSS that uses --color-base / --color-text-main */
-  --color-base:         var(--color-bg);
-  --color-text-main:    var(--color-text);
-  --color-text-muted:   var(--color-muted);
-  --color-border-slate: var(--color-border);
-  --color-border-accent:rgba(95, 168, 211, 0.25);
-
-  /* Deprecated — DO NOT use in new code; kept so old CSS vars resolve */
-  --color-primary:      var(--color-accent);
-
   /* Typography */
   --font-heading: 'Barlow Condensed', 'Rajdhani', 'Inter', sans-serif;
   --font-body:    'IBM Plex Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -106,9 +96,7 @@ img, picture {
 .no-js .sec-title,
 .no-js .stat-item,
 .no-js .ms,
-.no-js .gallery-item,
-.no-js .tier-card,
-.no-js .event-card {
+.no-js .gallery-item {
   opacity: 1 !important;
   transform: none !important;
   clip-path: none !important;

@@ -1,35 +1,10 @@
 /**
  * css/sections/what-we-do.css — Section: Engineering Domains & Core Capabilities (#what-we-do)
  * Depends on: css/base.css, css/layout.css
- * Touches: #what-we-do, .domain-card, .capability-tag
+ * Touches: #what-we-do
  */
 
 #what-we-do {
   position: relative;
 }
 
-.domain-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-  margin-top: 24px;
-}
-
-.domain-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  padding: 24px;
-  transition: border-color 0.25s ease;
-}
-
-.domain-card:hover {
-  border-color: rgba(95, 168, 211, 0.35);
-}
-
-.domain-title {
-  font-family: var(--font-heading);
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--color-accent);
-  margin-bottom: 8px;
-}

@@ -94,7 +94,7 @@ This document provides a comprehensive mapping of every file in the AeroBMSCE co
     └── js/features/
         └── flightPath/
             ├── pathGeometry.js   Pure geometry: builds cubic-bezier SVG path string + waypoints from HISTORY data
-            ├── drawOnScroll.js   Animates stroke-dashoffset via GSAP ScrollTrigger scrub; exposes getDrawProgress()
+            ├── drawOnScroll.js   Animates stroke-dashoffset via GSAP ScrollTrigger scrub
             └── planeFollower.js  RAF tick: moves #fp-plane SVG icon along the drawn path using getPointAtLength
 ```
 

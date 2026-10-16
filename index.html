@@ -69,9 +69,6 @@
       --color-text:         #E5E9F0;
       --color-muted:        #94A3B8;
       --color-border:       rgba(148,163,184,0.15);
-      /* Alias kept for any surviving old references */
-      --color-primary:      var(--color-accent);
-      --color-base:         var(--color-bg);
     }
     html {
       font-size: 16px;
@@ -352,8 +349,12 @@
              data-phase="Cruise">
           <div class="fleet-image-wrap">
             <picture>
+              <source type="image/webp" srcset="images/photo2.webp">
+              <img src="images/photo2.jpg" alt="AeroBMSCE fixed-wing aircraft displayed by the team" class="fleet-img" width="400" height="240" loading="lazy" decoding="async">
+            </picture>
+            <picture class="fleet-image-secondary">
               <source type="image/webp" srcset="images/cad-plane.webp">
-              <img src="images/cad-plane.png" alt="Yaksha Micro-24" class="fleet-img" width="400" height="240" loading="lazy" decoding="async">
+              <img src="images/cad-plane.png" alt="Yaksha Micro-24 CAD render" width="160" height="96" loading="lazy" decoding="async">
             </picture>
           </div>
           <div class="fleet-header">
@@ -382,8 +383,8 @@
              data-phase="Takeoff">
           <div class="fleet-image-wrap">
             <picture>
-              <source type="image/webp" srcset="images/photo8.webp">
-              <img src="images/photo8.jpg" alt="Phantom Autonomous Hexacopter" class="fleet-img" width="400" height="240" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="images/photo7.webp">
+              <img src="images/photo7.jpg" alt="AeroBMSCE hexacopter displayed at the SAE Aerothon 2025" class="fleet-img" width="400" height="240" loading="lazy" decoding="async">
             </picture>
           </div>
           <div class="fleet-header">
@@ -447,6 +448,12 @@
             <b>SAE Aero Design West</b><br>8th place globally (2020)<br><br>
             <b>SAE INDIA</b><br>1st place overall, ₹1,00,000 cash prize (2020)
           </div>
+        </div>
+        <!-- Quietly signals that the timeline continues beyond these highlights. -->
+        <div class="milestones-closing body-block">
+          <span class="milestones-closing-label">AND MANY MORE</span>
+          <p>These highlights are only part of AeroBMSCE’s journey. The club has built, flown and competed in many more projects and events over the years.</p>
+          <span class="milestones-continuation" aria-hidden="true"></span>
         </div>
       </div>
     </div>

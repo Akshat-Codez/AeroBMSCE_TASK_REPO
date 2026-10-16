@@ -1,29 +1,3 @@
-/**
- * css/sections/join.css — Recruitment calls, department requirements, and join CTA (#join)
- * Depends on: css/base.css, css/layout.css
- * Touches: #join, .join-section, .join-grid
- */
-
-#join,
-.join-section {
-  position: relative;
-  background: var(--color-bg);
-  border-top: 1px solid var(--color-border);
-}
-
-.join-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-}
-
-@media (max-width: 768px) {
-  .join-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-}
-
 /* Partner callout and button-contained aircraft takeoff. */
 .partner-callout {
   padding: 64px 0;

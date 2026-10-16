@@ -1,16 +1,12 @@
 /**
  * js/features/flightPath/drawOnScroll.js — SVG path draw animation driven by ScrollTrigger scrub
  * Purpose: Animates stroke-dashoffset so the path "draws" as user scrolls.
- *          Exposes getProgress() for planeFollower.js to sync aircraft position.
+ *          The plane follower reads the same SVG path's dash offset directly.
  * Dependencies: window.gsap, window.ScrollTrigger, pathGeometry.js
  * Touches: #flight-path-svg, .fp-path, #timeline
  */
 
 import { prefersReducedMotion } from '../../core/device.js';
-
-/** @type {SVGPathElement|null} */
-let pathEl = null;
-let pathLength = 0;
 
 /**
  * Initialize the scroll-scrub draw animation on the given path element.
@@ -18,8 +14,7 @@ let pathLength = 0;
  * @param {HTMLElement} triggerSection
  */
 export function initDraw(el, triggerSection) {
-  pathEl    = el;
-  pathLength = el.getTotalLength();
+  const pathLength = el.getTotalLength();
 
   // Initial state — fully hidden
   el.style.strokeDasharray  = pathLength;
@@ -45,14 +40,3 @@ export function initDraw(el, triggerSection) {
   });
 }
 
-/**
- * Returns how far the path has drawn (0..1) based on strokeDashoffset.
- * Used by planeFollower to sync aircraft icon position.
- */
-export function getDrawProgress() {
-  if (!pathEl || pathLength === 0) return 0;
-  const offset  = parseFloat(pathEl.style.strokeDashoffset) || 0;
-  return 1 - offset / pathLength;
-}
-
-export { pathEl, pathLength };
