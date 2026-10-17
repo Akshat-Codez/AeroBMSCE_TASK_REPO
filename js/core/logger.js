@@ -1,21 +1,8 @@
 /**
- * js/core/logger.js — Debug logger and resilient module bootstrap wrapper
- * Depends on: js/config.js (DEBUG)
+ * js/core/logger.js — Error reporting and resilient module bootstrap wrapper
+ * Depends on: None
  * Touches: console
  */
-
-import { DEBUG } from '../config.js';
-
-/**
- * Log informational messages only when DEBUG is enabled
- * @param {string} prefix
- * @param {...any} args
- */
-export function log(prefix, ...args) {
-  if (DEBUG && typeof console !== 'undefined' && console.log) {
-    console.log(`[AeroBMSCE:${prefix}]`, ...args);
-  }
-}
 
 /**
  * Log warning messages
@@ -37,7 +24,6 @@ export function warn(prefix, ...args) {
 export function safeInit(name, fn) {
   try {
     const result = fn();
-    log(name, 'Initialized successfully');
     return result;
   } catch (err) {
     warn(name, 'Init failed gracefully:', err);

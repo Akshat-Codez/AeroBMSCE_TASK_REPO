@@ -4,7 +4,7 @@
  * Touches: IntersectionObserver
  */
 
-import { log, warn } from './logger.js';
+import { warn } from './logger.js';
 
 /**
  * Dynamically import and initialize a module when a DOM element nears the viewport
@@ -27,7 +27,6 @@ export function lazyInit(selector, importFn, rootMargin = '300px') {
           module.default();
         }
       }
-      log('LazyLoader', `Loaded module for ${selector}`);
     } catch (err) {
       warn('LazyLoader', `Failed loading module for ${selector}:`, err);
     }

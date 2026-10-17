@@ -1,6 +1,6 @@
 /**
  * js/ui/flyButton.js — Flight takeoff animation for .fly-btn interactive buttons
- * Triggers the diagonal takeoff flight trajectory and smoothly scrolls to destination upon exit
+ * Plays the takeoff before scrolling to or opening the destination.
  */
 
 import { smoothScrollTo } from '../core/scroll.js';
@@ -13,9 +13,10 @@ export function initFlyButtons() {
   flyButtons.forEach((btn) => {
     const plane = btn.querySelector('.plane');
     if (!plane) return;
+    const flightDuration = btn.id === 'heroCta' ? 1100 : 1000;
 
     btn.addEventListener('click', (e) => {
-      // If clicking an anchor link, prevent instant jump to allow the takeoff animation to play
+      // Prevent the anchor jump so the hero flight is visible before scrolling.
       if (btn.tagName === 'A') {
         e.preventDefault();
       }
@@ -28,28 +29,25 @@ export function initFlyButtons() {
         btn.disabled = true;
       }
 
-      const onFlightEnd = () => {
-        plane.removeEventListener('animationend', onFlightEnd);
-        btn.classList.remove('flying');
-        btn.removeAttribute('aria-busy');
-        if (btn.tagName === 'BUTTON') {
-          btn.disabled = false;
-        }
-
-        // Navigate or smooth scroll to target
+      const finishFlight = () => {
+        // Navigate or smooth scroll only after the plane animation has finished.
         const target = btn.getAttribute('href') || btn.dataset.target || '#about';
         if (target && target.startsWith('#')) {
           smoothScrollTo(target);
         } else if (target) {
           window.location.href = target;
         }
+
+        btn.classList.remove('flying');
+        btn.removeAttribute('aria-busy');
+        if (btn.tagName === 'BUTTON') {
+          btn.disabled = false;
+        }
       };
 
-      if (prefersReducedMotion) {
-        onFlightEnd();
-      } else {
-        plane.addEventListener('animationend', onFlightEnd, { once: true });
-      }
+      // Reduced-motion users go directly to the destination; others see the full flight.
+      if (prefersReducedMotion) finishFlight();
+      else window.setTimeout(finishFlight, flightDuration);
     });
   });
 }

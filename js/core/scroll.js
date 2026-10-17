@@ -6,17 +6,9 @@
 
 import { prefersReducedMotion } from './device.js';
 import { NAVBAR_HEIGHT } from '../config.js';
-import { log, warn } from './logger.js';
+import { warn } from './logger.js';
 
 let lenisInstance = null;
-
-/**
- * Get active Lenis instance or null
- * @returns {any}
- */
-export function getLenis() {
-  return lenisInstance;
-}
 
 /**
  * Initialize smooth scroll engine
@@ -61,13 +53,11 @@ export function initScrollEngine() {
         });
         window.gsap.ticker.lagSmoothing(0);
       }
-      log('ScrollEngine', 'Lenis initialized.');
     } catch (e) {
       warn('ScrollEngine', 'Lenis initialization failed, falling back to native scroll:', e);
       lenisInstance = null;
     }
   } else {
-    log('ScrollEngine', 'Native scrolling active (prefers-reduced-motion).');
   }
 
   // Handle resize and bfcache refresh

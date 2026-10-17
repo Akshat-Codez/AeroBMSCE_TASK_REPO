@@ -17,6 +17,9 @@ export function initBackToTop() {
 
   // Intercept all anchor hash links
   qsa('a[href^="#"]').forEach((link) => {
+    // Flight buttons handle their own destination after the plane animation.
+    if (link.classList.contains('fly-btn')) return;
+
     on(link, 'click', (e) => {
       const href = link.getAttribute('href');
       if (!href || href === '#') return;
